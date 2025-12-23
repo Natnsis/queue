@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, View } from "react-native";
-export default function Index() {
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, Image } from 'react-native'
 
+export default function Index() {
   return (
-    <View>
-      <Text>
-        Hello with Plus Jakarta Sans!
-      </Text>
-    </View>
+    <SafeAreaView className='h-screen'>
+      <Text>heha</Text>
+    </SafeAreaView>
   );
 }
