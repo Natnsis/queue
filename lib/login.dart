@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:queue/root/HomeTab.dart";
+import "package:queue/tabs/HomeTab.dart";
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
