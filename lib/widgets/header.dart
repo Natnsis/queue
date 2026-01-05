@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:queue/tabs/protected/profile.dart';
+import 'package:queue/protected/profile.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
