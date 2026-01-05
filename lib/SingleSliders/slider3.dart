@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:queue/login.dart";
 
 class Slider3 extends StatelessWidget {
   const Slider3({super.key});
@@ -12,26 +13,17 @@ class Slider3 extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    print("button Clicked");
-                  },
-                  child: Text(
-                    "Skip",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+            SizedBox(height: 30),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(25),
+                child: Image.asset(
+                  "assets/images/order.png",
+                  width: w,
+                  fit: BoxFit.fitWidth,
                 ),
-              ],
+              ),
             ),
-
-            SizedBox(height: 10),
-            Center(child: Image.asset("assets/images/order.png")),
 
             SizedBox(height: 10),
             Column(
@@ -43,12 +35,15 @@ class Slider3 extends StatelessWidget {
                 ),
 
                 SizedBox(height: 15),
-                Text(
-                  "Join the queue digitally and be served fairly, one by one.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    "Join the queue digitally and be served fairly, one by one.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
@@ -63,7 +58,12 @@ class Slider3 extends StatelessWidget {
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                },
                 child: const Text(
                   "Get Started",
                   style: TextStyle(fontSize: 18),

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:queue/login.dart";
 
 class Slider2 extends StatelessWidget {
   final VoidCallback onNext;
@@ -19,7 +20,10 @@ class Slider2 extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    print("Skip clicked");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   },
                   child: const Text(
                     "Skip",
@@ -37,7 +41,7 @@ class Slider2 extends StatelessWidget {
               children: const [
                 Text(
                   "Scan. Queue. Relax.",
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
                 ),
                 SizedBox(height: 15),
@@ -45,7 +49,7 @@ class Slider2 extends StatelessWidget {
                   padding: EdgeInsets.only(right: 20),
                   child: Text(
                     "Scan the QR code to join the line instantly no registration, no waiting around.",
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
@@ -68,7 +72,7 @@ class Slider2 extends StatelessWidget {
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                 ),
-                onPressed: onNext, // 👈 use the callback here
+                onPressed: onNext,
                 child: const Text("Continue", style: TextStyle(fontSize: 18)),
               ),
             ),

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:queue/login.dart";
 
 class Slider1 extends StatelessWidget {
   final VoidCallback onNext;
@@ -8,6 +9,7 @@ class Slider1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Padding(
@@ -18,7 +20,14 @@ class Slider1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     "Skip",
                     style: TextStyle(
@@ -31,7 +40,16 @@ class Slider1 extends StatelessWidget {
             ),
 
             const SizedBox(height: 10),
-            Center(child: Image.asset("assets/images/crowd.png")),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(25),
+                child: Image.asset(
+                  "assets/images/crowd.png",
+                  width: w,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
 
             const SizedBox(height: 10),
             Column(
@@ -42,12 +60,15 @@ class Slider1 extends StatelessWidget {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
                 ),
                 SizedBox(height: 15),
-                Text(
-                  "Join queues digitally and get notified when it’s your turn no standing, no stress.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Join queues digitally and get notified when it’s your turn no standing, no stress.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
