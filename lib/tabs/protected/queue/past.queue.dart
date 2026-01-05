@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 
-class QueuesTab extends StatelessWidget {
-  const QueuesTab({super.key});
-
+class PastQueue extends StatelessWidget {
+  const PastQueue({super.key});
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text("Queues"));
