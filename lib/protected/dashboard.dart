@@ -107,19 +107,21 @@ class Dashboard extends StatelessWidget {
                     const SizedBox(height: 20),
 
                     //quick actions
-                    Padding(
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Quick Actions",
-                            style: TextStyle(),
-                            textAlign: TextAlign.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Quick Actions",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
                     ),
+                    SizedBox(height: 10),
+
                     Padding(
                       padding: EdgeInsetsGeometry.symmetric(
                         horizontal: 15,
@@ -198,13 +200,13 @@ class Dashboard extends StatelessWidget {
                                   Center(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: Colors.blue,
+                                        color: Colors.purple,
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(5),
                                         child: Icon(
-                                          Icons.document_scanner,
+                                          Icons.location_on,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -218,35 +220,120 @@ class Dashboard extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
                         ],
                       ),
                     ),
                     const SizedBox(height: 20),
 
-                    Container(
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade200,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Nearby Queues",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 10),
 
                     Container(
-                      height: 120,
+                      height: 100,
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade200,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 4,
+                            spreadRadius: 1,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 20),
-
-                    Container(
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade200,
-                        borderRadius: BorderRadius.circular(12),
+                      child: Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(
+                                          Icons.location_on,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 10),
+                                Column(
+                                  children: [
+                                    Text(
+                                      "City Hospital - General",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      "down town medical center",
+                                      style: TextStyle(fontSize: 13),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.timer_rounded, size: 15),
+                                            Text("25mins"),
+                                          ],
+                                        ),
+                                        SizedBox(width: 10),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.people, size: 15),
+                                            Text("waiting"),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Join",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
