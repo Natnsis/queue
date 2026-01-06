@@ -23,7 +23,7 @@ class Header extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ProfileTab()),
+              MaterialPageRoute(builder: (context) => const Profile()),
             );
           },
           style: ElevatedButton.styleFrom(padding: EdgeInsets.zero),

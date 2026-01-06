@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:queue/protected/dashboard.dart";
+import "package:queue/protected/tab.holder.dart";
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                    MaterialPageRoute(builder: (context) => const Tabs()),
                   );
                 },
                 icon: Image.asset(
