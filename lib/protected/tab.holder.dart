@@ -30,10 +30,7 @@ class TabsState extends State<Tabs> {
           });
         },
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: "Dashboard",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.qr_code), label: "Scan"),
           BottomNavigationBarItem(icon: Icon(Icons.queue), label: "Queue"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),

@@ -51,6 +51,7 @@ class Dashboard extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            //scanner
                             Center(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -66,7 +67,6 @@ class Dashboard extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 5),
-
                             Center(
                               child: Text(
                                 'No Active Queue',
@@ -106,11 +106,120 @@ class Dashboard extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
 
-                    Container(
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade200,
-                        borderRadius: BorderRadius.circular(12),
+                    //quick actions
+                    Padding(
+                      padding: EdgeInsetsGeometry.symmetric(horizontal: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Quick Actions",
+                            style: TextStyle(),
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsGeometry.symmetric(
+                        horizontal: 15,
+                        vertical: 5,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //qr
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 4,
+                                  spreadRadius: 1,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 25,
+                                vertical: 12,
+                              ),
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(
+                                          Icons.document_scanner,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Center(child: Text("Scan QR")),
+                                  SizedBox(height: 5),
+                                  Center(child: Text("join queue")),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 20),
+
+                          //queue
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 4,
+                                  spreadRadius: 1,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 25,
+                                vertical: 12,
+                              ),
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(
+                                          Icons.document_scanner,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Center(child: Text("My Queue")),
+                                  SizedBox(height: 5),
+                                  Center(child: Text("join queue")),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 20),
