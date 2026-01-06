@@ -39,8 +39,18 @@ class Scan extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
-          Container(child: Text("heeh")),
+          SizedBox(height: 20),
+          Center(
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text("heeh"),
+            ),
+          ),
         ],
       ),
     );
