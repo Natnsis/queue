@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:queue/widgets/queue.history.dart";
 
 class Scan extends StatelessWidget {
   const Scan({super.key});
@@ -55,7 +56,6 @@ class Scan extends StatelessWidget {
           SizedBox(height: 20),
 
           Container(
-            width: double.infinity,
             decoration: BoxDecoration(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -91,34 +91,7 @@ class Scan extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 4,
-                    spreadRadius: 1,
-                    offset: Offset(0, 0),
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    Text("hehe"),
-                    Text("hehe"),
-                    Text("hehe"),
-                    Text("hehe"),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          History(),
         ],
       ),
     );

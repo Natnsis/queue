@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:queue/protected/dashboard.dart";
+import "package:queue/protected/home.dart";
 import "package:queue/protected/profile.dart";
 import "package:queue/protected/queue.dart";
 import "package:queue/protected/scan.dart";
@@ -12,7 +12,7 @@ class Tabs extends StatefulWidget {
 
 class TabsState extends State<Tabs> {
   int currentTab = 0;
-  List<Widget> screens = const [Dashboard(), Scan(), Queue(), Profile()];
+  List<Widget> screens = const [Home(), Scan(), Queue(), Profile()];
 
   @override
   Widget build(BuildContext context) {
