@@ -40,6 +40,7 @@ class Scan extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
+
           Center(
             child: Container(
               height: 200,
@@ -49,6 +50,73 @@ class Scan extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Text("heeh"),
+            ),
+          ),
+          SizedBox(height: 20),
+
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'scan now',
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Icon(Icons.image),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    spreadRadius: 1,
+                    offset: Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Text("hehe"),
+                    Text("hehe"),
+                    Text("hehe"),
+                    Text("hehe"),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
