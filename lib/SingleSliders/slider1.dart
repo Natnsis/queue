@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:queue/login.dart";
+import 'package:flutter/material.dart';
+import 'package:queue/login.dart';
 
 class Slider1 extends StatelessWidget {
   final VoidCallback onNext;
@@ -13,7 +13,7 @@ class Slider1 extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
         child: Column(
           children: [
             Row(
@@ -31,60 +31,79 @@ class Slider1 extends StatelessWidget {
                   child: const Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 32),
 
-            const SizedBox(height: 10),
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(25),
+            // Image with consistent radius and better sizing
+            ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: SizedBox(
+                height: h * 0.42,
+                width: w,
                 child: Image.asset(
                   "assets/images/crowd.png",
-                  width: w,
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
 
-            const SizedBox(height: 10),
-            Column(
-              children: const [
-                Text(
-                  "Skip the Line, Save Your Precious Time.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+            const SizedBox(height: 36),
+
+            // Text content with improved spacing & typography
+            Text(
+              "Skip the Line, Save Your Precious Time.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                color: Colors.black87,
+                height: 1.3,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Text(
+                "Join queues digitally and get notified when it’s your turn — no standing, no stress.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black54,
+                  height: 1.4,
                 ),
-                SizedBox(height: 15),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    "Join queues digitally and get notified when it’s your turn no standing, no stress.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
 
             const Spacer(),
+
+            // Continue button with consistent styling
             SizedBox(
               width: double.infinity,
-              height: h * 0.07,
+              height: 52,
               child: FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(
+                    0xFF4361ee,
+                  ), // Consistent primary
                   foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  elevation: 0,
                 ),
                 onPressed: onNext,
-                child: const Text("Continue", style: TextStyle(fontSize: 18)),
+                child: const Text(
+                  "Continue",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                ),
               ),
             ),
           ],

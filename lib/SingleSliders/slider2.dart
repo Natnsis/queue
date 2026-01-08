@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:queue/login.dart";
+import 'package:flutter/material.dart';
+import 'package:queue/login.dart';
 
 class Slider2 extends StatelessWidget {
   final VoidCallback onNext;
@@ -12,7 +12,7 @@ class Slider2 extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
         child: Column(
           children: [
             Row(
@@ -22,58 +22,77 @@ class Slider2 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
                     );
                   },
                   child: const Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 10),
-            Column(
-              children: const [
-                Text(
-                  "Scan. Queue. Relax.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
-                ),
-                SizedBox(height: 15),
-                Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
-                    "Scan the QR code to join the line instantly no registration, no waiting around.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
                       color: Colors.black54,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: 10),
-            Center(child: Image.asset("assets/images/qr.png")),
+            const SizedBox(height: 48),
 
-            const Spacer(),
+            // Headline & description
+            Text(
+              "Scan. Queue. Relax.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                color: Colors.black87,
+                height: 1.3,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Text(
+                "Scan the QR code to join the line instantly — no registration, no waiting around.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black54,
+                  height: 1.4,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 32),
+
+            // QR Image — centered, responsive, with consistent rounding if needed
+            Expanded(
+              child: Center(
+                child: Image.asset("assets/images/qr.png", fit: BoxFit.contain),
+              ),
+            ),
 
             SizedBox(
               width: double.infinity,
-              height: h * 0.07,
+              height: 52,
               child: FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(0xFF4361ee),
                   foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  elevation: 0,
                 ),
                 onPressed: onNext,
-                child: const Text("Continue", style: TextStyle(fontSize: 18)),
+                child: const Text(
+                  "Continue",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                ),
               ),
             ),
           ],
