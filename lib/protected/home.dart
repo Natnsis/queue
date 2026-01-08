@@ -33,7 +33,6 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                // Optional: Add profile icon later
               ],
             ),
 
@@ -81,7 +80,7 @@ class Home extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0F4FF), // Very light blue tint (not harsh)
+        color: const Color(0xFFF0F4FF),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
