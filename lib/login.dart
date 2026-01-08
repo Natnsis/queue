@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:queue/protected/tab.holder.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -50,16 +50,21 @@ class LoginScreen extends StatelessWidget {
 
               const SizedBox(height: 40),
 
-              // Google Sign-Up Button (refined)
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: OutlinedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Tabs()),
-                    );
+                  onPressed: () async {
+                    try {
+                      await Supabase.instance.client.auth.signInWithOAuth(
+                        OAuthProvider.google,
+                        redirectTo: 'io.supabase.flutter://login-callback',
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Login failed: $e')),
+                      );
+                    }
                   },
                   icon: Image.asset(
                     'assets/images/google.png',

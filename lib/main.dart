@@ -9,19 +9,43 @@ Future<void> main() async {
     url: 'https://lwsfmgkvpkcrjhhxjhdu.supabase.co',
     anonKey: 'sb_publishable_E-8ysutEL7rdr9bAIvciaA_x3Ai84pA',
   );
-  final session = Supabase.instance.client.auth.currentSession;
-
-  runApp(QueueApp(isLoggedIn: session != null));
+  runApp(QueueApp());
 }
 
 class QueueApp extends StatelessWidget {
-  final bool isLoggedIn;
-  const QueueApp({super.key, required this.isLoggedIn});
+  const QueueApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isLoggedIn ? const Tabs() : const Onboarding(),
+      home: const AuthGate(),
+    );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<AuthState>(
+      stream: Supabase.instance.client.auth.onAuthStateChange,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        final session = Supabase.instance.client.auth.currentSession;
+
+        if (session != null) {
+          return const Tabs();
+        } else {
+          return const Onboarding();
+        }
+      },
     );
   }
 }
