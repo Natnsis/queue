@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -10,53 +10,48 @@ class Profile extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            /// HEADER
+            // HEADER — consistent with other screens
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xFF2D9CDB), Color(0xFF56CCF2)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+              decoration: BoxDecoration(
+                color: const Color(0xFF4361ee),
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(24),
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     "Profile",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Icon(Icons.settings, color: Colors.white),
+                  const Icon(Icons.settings, color: Colors.white, size: 22),
                 ],
               ),
             ),
 
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(18, 24, 18, 16),
                 child: Column(
                   children: [
-                    /// USER CARD
+                    // USER CARD
                     Container(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(18),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 12,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -65,35 +60,36 @@ class Profile extends StatelessWidget {
                           Row(
                             children: [
                               const CircleAvatar(
-                                radius: 28,
+                                radius: 32,
                                 backgroundImage: AssetImage(
-                                  "assets/profile.jpg",
+                                  "assets/images/profile.png",
                                 ),
                               ),
-                              const SizedBox(width: 12),
+                              const SizedBox(width: 16),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "Sarah Johnson",
                                     style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xFF1e293b),
                                     ),
                                   ),
-                                  SizedBox(height: 4),
+                                  const SizedBox(height: 4),
                                   Text(
                                     "sarah.johnson@email.com",
                                     style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey,
+                                      fontSize: 13,
+                                      color: const Color(0xFF64748b),
                                     ),
                                   ),
                                   Text(
                                     "+1 (555) 123-4567",
                                     style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey,
+                                      fontSize: 13,
+                                      color: const Color(0xFF64748b),
                                     ),
                                   ),
                                 ],
@@ -101,9 +97,9 @@ class Profile extends StatelessWidget {
                             ],
                           ),
 
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 22),
 
-                          /// STATS
+                          // STATS — refined colors & alignment
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
@@ -119,24 +115,26 @@ class Profile extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 24),
 
-                    /// QUICK ACTIONS
+                    // QUICK ACTIONS HEADER
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
                           "Quick Actions",
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF1e293b),
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 14),
 
+                    // QUICK ACTIONS
                     Row(
                       children: [
                         _QuickAction(
@@ -144,7 +142,7 @@ class Profile extends StatelessWidget {
                           title: "My QR Code",
                           subtitle: "Show your code",
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 14),
                         _QuickAction(
                           icon: Icons.bookmark,
                           title: "Saved Places",
@@ -153,35 +151,45 @@ class Profile extends StatelessWidget {
                       ],
                     ),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 24),
 
-                    /// QUEUE HISTORY
+                    // QUEUE HISTORY HEADER
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
                           "Queue History",
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF1e293b),
                           ),
                         ),
-                        Text("View All", style: TextStyle(color: Colors.blue)),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                            color: const Color(0xFF4361ee),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ],
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 14),
 
+                    // HISTORY ITEMS
                     _QueueHistoryItem(
                       title: "City Hospital - General",
                       time: "Today, 10:30 AM",
                       duration: "25 mins",
                     ),
+                    const SizedBox(height: 10),
                     _QueueHistoryItem(
                       title: "DMV Office",
                       time: "Yesterday, 2:15 PM",
                       duration: "42 mins",
                     ),
+                    const SizedBox(height: 10),
                     _QueueHistoryItem(
                       title: "Restaurant - The Grill",
                       time: "Jan 15, 7:30 PM",
@@ -198,9 +206,9 @@ class Profile extends StatelessWidget {
   }
 }
 
-/// --------------------
-/// SMALL WIDGETS
-/// --------------------
+// --------------------
+// SMALL WIDGETS (REFINED)
+// --------------------
 
 class _StatItem extends StatelessWidget {
   final String value;
@@ -214,14 +222,17 @@ class _StatItem extends StatelessWidget {
       children: [
         Text(
           value,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF4361ee), // Brand color for emphasis
           ),
         ),
-        const SizedBox(height: 4),
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+        const SizedBox(height: 6),
+        Text(
+          label,
+          style: TextStyle(fontSize: 12, color: const Color(0xFF64748b)),
+        ),
       ],
     );
   }
@@ -246,17 +257,30 @@ class _QuickAction extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6)],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: Colors.blue),
+            Icon(icon, color: const Color(0xFF4361ee), size: 24),
             const SizedBox(height: 12),
-            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF1e293b),
+                fontSize: 14,
+              ),
+            ),
             Text(
               subtitle,
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: const Color(0xFF64748b)),
             ),
           ],
         ),
@@ -279,44 +303,61 @@ class _QueueHistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
-        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6)],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          const Icon(Icons.location_city, color: Colors.blue),
-          const SizedBox(width: 12),
+          Icon(Icons.location_city, color: const Color(0xFF4361ee), size: 20),
+          const SizedBox(width: 14),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1e293b),
+                  ),
                 ),
                 Text(
                   time,
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: const Color(0xFF64748b),
+                  ),
                 ),
               ],
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 duration,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF1e293b),
                 ),
               ),
-              const Text(
+              Text(
                 "Completed",
-                style: TextStyle(fontSize: 11, color: Colors.green),
+                style: TextStyle(
+                  fontSize: 11,
+                  color: const Color(0xFF10B981), // soft green (not harsh)
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
