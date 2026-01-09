@@ -8,6 +8,14 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    final metadata = user?.userMetadata ?? {};
+    final email = user?.email ?? '';
+    final name = metadata['full_name'] ?? metadata['name'] ?? '';
+    final avatar = metadata['avatar_url'] ?? metadata['picture'] ?? '';
+    final phone = user?.phone ?? '';
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
@@ -62,18 +70,21 @@ class Profile extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              const CircleAvatar(
+                              CircleAvatar(
                                 radius: 32,
-                                backgroundImage: AssetImage(
-                                  "assets/images/profile.png",
-                                ),
+                                backgroundImage: avatar.isNotEmpty
+                                    ? NetworkImage(avatar)
+                                    : const AssetImage(
+                                            "assets/images/profile.png",
+                                          )
+                                          as ImageProvider,
                               ),
                               const SizedBox(width: 16),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Sarah Johnson",
+                                    name,
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w700,
@@ -82,14 +93,16 @@ class Profile extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    "sarah.johnson@email.com",
+                                    email,
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: const Color(0xFF64748b),
                                     ),
                                   ),
                                   Text(
-                                    "+1 (555) 123-4567",
+                                    phone.isEmpty
+                                        ? "phone-number not found"
+                                        : phone,
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: const Color(0xFF64748b),
