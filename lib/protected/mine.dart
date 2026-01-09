@@ -6,18 +6,27 @@ class Mine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Tabs()),
-              );
-            },
-            child: Icon(Icons.arrow_left),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4361ee),
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Tabs()),
+                  );
+                },
+                child: Icon(Icons.arrow_left),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

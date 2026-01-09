@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:queue/protected/mine.dart';
 import 'package:queue/protected/tab.holder.dart';
 
 class Home extends StatelessWidget {
@@ -75,9 +76,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  // --------------------
   // NO ACTIVE QUEUE CARD
-  // --------------------
   Widget _noActiveQueueCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -95,7 +94,7 @@ class Home extends StatelessWidget {
               borderRadius: BorderRadius.circular(18),
             ),
             child: const Icon(
-              Icons.document_scanner,
+              Icons.playlist_add,
               color: Colors.white,
               size: 28,
             ),
@@ -111,7 +110,7 @@ class Home extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           const Text(
-            "Scan a QR code to join a queue instantly.",
+            "Create your own Queue, and share your QR for others",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -133,11 +132,13 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
               ),
               onPressed: () {
-                // Switch to Scan tab (index 1)
-                Tabs.of(context)?.switchTab(1);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Mine()),
+                );
               },
               child: const Text(
-                "Scan QR Code",
+                "Generate QR Code",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
             ),
@@ -147,15 +148,13 @@ class Home extends StatelessWidget {
     );
   }
 
-  // --------------------
   // QUICK ACTIONS
-  // --------------------
   Widget _quickActions(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: _QuickActionCard(
-            tabIndex: 1, // Scan tab
+            tabIndex: 1,
             icon: Icons.document_scanner,
             color: const Color(0xFF4361ee),
             title: "Scan QR",
