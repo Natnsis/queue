@@ -14,7 +14,6 @@ class Tabs extends StatefulWidget {
 class _TabsState extends State<Tabs> {
   int _currentTab = 0;
 
-  // ❌ DO NOT use 'const' here — these widgets aren't const-constructible
   final List<Widget> _screens = [
     const Home(),
     const Scan(),
