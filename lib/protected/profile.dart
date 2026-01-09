@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:queue/login.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -195,6 +198,71 @@ class Profile extends StatelessWidget {
                       time: "Jan 15, 7:30 PM",
                       duration: "15 mins",
                     ),
+
+                    SizedBox(height: 15),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Color(0xFFEF4444)),
+                          foregroundColor: const Color(0xFFEF4444),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        icon: const Icon(Icons.logout, size: 18),
+                        label: const Text(
+                          "Logout",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        onPressed: () async {
+                          final confirm = await showDialog<bool>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("Confirm Logout"),
+                              content: const Text(
+                                "Are you sure you want to logout?",
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, false),
+                                  child: const Text("Cancel"),
+                                ),
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, true),
+                                  child: const Text("Logout"),
+                                ),
+                              ],
+                            ),
+                          );
+
+                          if (confirm != true) return;
+
+                          try {
+                            await Supabase.instance.client.auth.signOut();
+                            final googleSignIn = GoogleSignIn();
+                            if (await googleSignIn.isSignedIn()) {
+                              await googleSignIn.signOut();
+                            }
+                            if (context.mounted) {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (_) => const LoginScreen(),
+                                ),
+                                (route) => false,
+                              );
+                            }
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Logout failed: $e')),
+                            );
+                          }
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -206,9 +274,7 @@ class Profile extends StatelessWidget {
   }
 }
 
-// --------------------
 // SMALL WIDGETS (REFINED)
-// --------------------
 
 class _StatItem extends StatelessWidget {
   final String value;
