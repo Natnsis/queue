@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:queue/protected/tab.holder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -23,7 +25,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Headline
-              Text(
+              const Text(
                 "You don’t wait. You live. We notify you✨",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -37,7 +39,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Description
-              Text(
+              const Text(
                 "Skip the lines and the stress. Get instant updates and walk in exactly when it’s your turn.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -56,13 +58,43 @@ class LoginScreen extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () async {
                     try {
-                      await Supabase.instance.client.auth.signInWithOAuth(
-                        OAuthProvider.google,
-                        redirectTo: 'io.supabase.flutter://login-callback',
+                      final googleSignIn = GoogleSignIn(
+                        scopes: ['email', 'profile'],
+                        serverClientId:
+                            '450302312622-e3r3jees653b76pbavk8k63odbhnfltv.apps.googleusercontent.com',
+                      );
+
+                      final googleUser = await googleSignIn.signIn();
+
+                      if (googleUser == null) {
+                        return;
+                      }
+
+                      final googleAuth = await googleUser.authentication;
+
+                      final idToken = googleAuth.idToken;
+                      final accessToken = googleAuth.accessToken;
+
+                      if (idToken == null || accessToken == null) {
+                        throw Exception('Missing Google auth token');
+                      }
+
+                      await Supabase.instance.client.auth.signInWithIdToken(
+                        provider: OAuthProvider.google,
+                        idToken: idToken,
+                        accessToken: accessToken,
+                      );
+
+                      if (!context.mounted) return;
+
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const Tabs()),
+                        (route) => false,
                       );
                     } catch (e) {
+                      debugPrint('Google login error: $e');
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Login failed: $e')),
+                        const SnackBar(content: Text('Google sign-in failed')),
                       );
                     }
                   },
