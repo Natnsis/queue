@@ -7,59 +7,62 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // HEADER
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    "assets/images/logo.png",
-                    height: 32,
-                    width: 32,
-                    fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // HEADER
+              Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      "assets/images/logo.png",
+                      height: 32,
+                      width: 32,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                const Text(
-                  "Queue",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black87,
+                  const SizedBox(width: 10),
+                  const Text(
+                    "Queue",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black87,
+                    ),
                   ),
-                ),
-                const Spacer(),
-              ],
-            ),
+                  const Spacer(),
+                ],
+              ),
 
-            const SizedBox(height: 28),
+              const SizedBox(height: 28),
 
-            // BODY
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _noActiveQueueCard(context),
-                    const SizedBox(height: 32),
-                    _sectionTitle("Quick Actions"),
-                    const SizedBox(height: 16),
-                    _quickActions(context),
-                    const SizedBox(height: 32),
-                    _sectionTitle("Nearby Queues"),
-                    const SizedBox(height: 16),
-                    _nearbyQueueCard(context),
-                  ],
+              // BODY
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _noActiveQueueCard(context),
+                      const SizedBox(height: 32),
+                      _sectionTitle("Quick Actions"),
+                      const SizedBox(height: 16),
+                      _quickActions(context),
+                      const SizedBox(height: 32),
+                      _sectionTitle("Nearby Queues"),
+                      const SizedBox(height: 16),
+                      _nearbyQueueCard(context),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

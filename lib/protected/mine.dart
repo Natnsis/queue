@@ -43,6 +43,9 @@ class _MineState extends State<Mine> {
               _QrPreview(height: size.height * 0.3),
 
               const SizedBox(height: 20),
+              TerminateQrButton(onTerminate: () {}),
+
+              const SizedBox(height: 20),
 
               /// FORM CARD
               _FormCard(
@@ -70,7 +73,7 @@ class _MineState extends State<Mine> {
 
     debugPrint("QR DATA: $qrData");
 
-    // next step: generate actual QR
+    // TODO:next step: generate actual QR
   }
 }
 
@@ -244,6 +247,66 @@ class _Input extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class TerminateQrButton extends StatelessWidget {
+  final VoidCallback onTerminate;
+
+  const TerminateQrButton({super.key, required this.onTerminate});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 48,
+      child: OutlinedButton.icon(
+        icon: const Icon(Icons.stop_circle_outlined, size: 20),
+        label: const Text(
+          "Terminate Queue",
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: const Color(0xFFEF4444),
+          side: const BorderSide(color: Color(0xFFEF4444)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+        ),
+        onPressed: () async {
+          final confirmed = await _confirm(context);
+          if (confirmed == true) {
+            onTerminate();
+          }
+        },
+      ),
+    );
+  }
+
+  Future<bool?> _confirm(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Terminate Queue"),
+        content: const Text(
+          "This will disable the QR code and stop new users from joining.\n\n"
+          "This action cannot be undone.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text(
+              "Terminate",
+              style: TextStyle(color: Color(0xFFEF4444)),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
