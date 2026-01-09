@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:queue/protected/tab.holder.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -24,7 +25,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Text(
+                const Text(
                   "Queue",
                   style: TextStyle(
                     fontSize: 22,
@@ -44,17 +45,15 @@ class Home extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _noActiveQueueCard(),
+                    _noActiveQueueCard(context),
                     const SizedBox(height: 32),
-
                     _sectionTitle("Quick Actions"),
                     const SizedBox(height: 16),
-                    _quickActions(),
-
+                    _quickActions(context),
                     const SizedBox(height: 32),
                     _sectionTitle("Nearby Queues"),
                     const SizedBox(height: 16),
-                    _nearbyQueueCard(),
+                    _nearbyQueueCard(context),
                   ],
                 ),
               ),
@@ -68,7 +67,7 @@ class Home extends StatelessWidget {
   Widget _sectionTitle(String title) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 16,
         color: Colors.black87,
@@ -76,7 +75,10 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget _noActiveQueueCard() {
+  // --------------------
+  // NO ACTIVE QUEUE CARD
+  // --------------------
+  Widget _noActiveQueueCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
       decoration: BoxDecoration(
@@ -99,7 +101,7 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Text(
+          const Text(
             "No Active Queue",
             style: TextStyle(
               fontSize: 18,
@@ -108,7 +110,7 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          Text(
+          const Text(
             "Scan a QR code to join a queue instantly.",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -130,7 +132,10 @@ class Home extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 10),
               ),
-              onPressed: () {},
+              onPressed: () {
+                // Switch to Scan tab (index 1)
+                Tabs.of(context)?.switchTab(1);
+              },
               child: const Text(
                 "Scan QR Code",
                 style: TextStyle(fontWeight: FontWeight.w600),
@@ -142,11 +147,15 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget _quickActions() {
+  // --------------------
+  // QUICK ACTIONS
+  // --------------------
+  Widget _quickActions(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: _QuickActionCard(
+            tabIndex: 1, // Scan tab
             icon: Icons.document_scanner,
             color: const Color(0xFF4361ee),
             title: "Scan QR",
@@ -156,10 +165,9 @@ class Home extends StatelessWidget {
         const SizedBox(width: 16),
         Expanded(
           child: _QuickActionCard(
+            tabIndex: 2, // My Queue tab
             icon: Icons.location_on_outlined,
-            color: const Color(
-              0xFF7E3AFF,
-            ), // Soft purple (from your image palette)
+            color: const Color(0xFF7E3AFF),
             title: "My Queue",
             subtitle: "View status",
           ),
@@ -168,7 +176,10 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget _nearbyQueueCard() {
+  // --------------------
+  // NEARBY QUEUE CARD
+  // --------------------
+  Widget _nearbyQueueCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -196,7 +207,7 @@ class Home extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "City Hospital - General",
                   style: TextStyle(
@@ -205,19 +216,16 @@ class Home extends StatelessWidget {
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4),
                 Text(
                   "Downtown Medical Center",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF64748b), // slate-500
-                  ),
+                  style: TextStyle(fontSize: 12, color: Color(0xFF64748b)),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Row(
                   children: [
-                    const Icon(Icons.timer, size: 14, color: Color(0xFF64748b)),
-                    const SizedBox(width: 4),
+                    Icon(Icons.timer, size: 14, color: Color(0xFF64748b)),
+                    SizedBox(width: 4),
                     Text(
                       "25 mins",
                       style: TextStyle(
@@ -226,13 +234,9 @@ class Home extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    const Icon(
-                      Icons.people,
-                      size: 14,
-                      color: Color(0xFF64748b),
-                    ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 12),
+                    Icon(Icons.people, size: 14, color: Color(0xFF64748b)),
+                    SizedBox(width: 4),
                     Text(
                       "Waiting",
                       style: TextStyle(
@@ -255,7 +259,10 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             ),
-            onPressed: () {},
+            onPressed: () {
+              // Switch to Scan tab
+              Tabs.of(context)?.switchTab(1);
+            },
             child: const Text(
               "Join",
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
@@ -270,14 +277,16 @@ class Home extends StatelessWidget {
 // --------------------
 // QUICK ACTION CARD
 // --------------------
-
 class _QuickActionCard extends StatelessWidget {
   final IconData icon;
   final Color color;
   final String title;
   final String subtitle;
+  final int tabIndex; // <-- now using tab index
 
   const _QuickActionCard({
+    super.key,
+    required this.tabIndex,
     required this.icon,
     required this.color,
     required this.title,
@@ -286,48 +295,53 @@ class _QuickActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(14),
+    return InkWell(
+      onTap: () {
+        Tabs.of(context)?.switchTab(tabIndex);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 10,
+              offset: const Offset(0, 3),
             ),
-            child: Icon(icon, color: Colors.white, size: 24),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Colors.black87,
-              fontSize: 14,
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(icon, color: Colors.white, size: 24),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            subtitle,
-            style: TextStyle(
-              fontSize: 12,
-              color: Color(0xFF64748b),
-              fontWeight: FontWeight.w500,
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Colors.black87,
+                fontSize: 14,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 4),
+            Text(
+              subtitle,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFF64748b),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

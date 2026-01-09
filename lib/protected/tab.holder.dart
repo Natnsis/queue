@@ -7,6 +7,9 @@ import 'package:queue/protected/scan.dart';
 class Tabs extends StatefulWidget {
   const Tabs({super.key});
 
+  static _TabsState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_TabsState>();
+
   @override
   State<Tabs> createState() => _TabsState();
 }
@@ -20,6 +23,13 @@ class _TabsState extends State<Tabs> {
     const Queue(),
     const Profile(),
   ];
+
+  // PUBLIC METHOD: switch tabs
+  void switchTab(int index) {
+    setState(() {
+      _currentTab = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +54,7 @@ class _TabsState extends State<Tabs> {
           ),
           currentIndex: _currentTab,
           onTap: (index) {
-            setState(() {
-              _currentTab = index;
-            });
+            switchTab(index);
           },
           type: BottomNavigationBarType.fixed,
           items: const [

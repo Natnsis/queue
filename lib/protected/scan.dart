@@ -9,7 +9,6 @@ class Scan extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          // HEADER — refined with gradient or soft tone
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
