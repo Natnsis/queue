@@ -57,6 +57,7 @@ class LoginScreen extends StatelessWidget {
                 height: 52,
                 child: OutlinedButton.icon(
                   onPressed: () async {
+                    /*
                     try {
                       final googleSignIn = GoogleSignIn(
                         scopes: ['email', 'profile'],
@@ -86,17 +87,21 @@ class LoginScreen extends StatelessWidget {
                       );
 
                       if (!context.mounted) return;
-
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (_) => const Tabs()),
-                        (route) => false,
-                      );
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => const Tabs()),
+                      (route) => false,
+                    );
                     } catch (e) {
                       debugPrint('Google login error: $e');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Google sign-in failed')),
                       );
                     }
+                    */
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Tabs()),
+                    );
                   },
                   icon: Image.asset(
                     'assets/images/google.png',
