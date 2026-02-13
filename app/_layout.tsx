@@ -5,15 +5,16 @@ import { ThemeProvider } from '@react-navigation/native';
 import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useColorScheme } from 'nativewind';
 import { useFonts } from 'expo-font'
+import { Appearance } from 'react-native';
+
+Appearance.setColorScheme('light');
 
 export {
   ErrorBoundary,
 } from 'expo-router';
 
 export default function RootLayout() {
-  const { colorScheme } = useColorScheme();
 
   const [loaded] = useFonts({
     regular: require("@/assets/fonts/regular.ttf"),
@@ -29,8 +30,8 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+    <ThemeProvider value={NAV_THEME['light']}>
+      <StatusBar style='dark' />
       <Stack screenOptions={{ headerShown: false }} />
       <PortalHost />
     </ThemeProvider>

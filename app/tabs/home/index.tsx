@@ -1,8 +1,6 @@
 import { View } from "react-native"
 import { Text } from "@/components/ui/text"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { colors } from "@/assets/contants"
-import { ThemeToggle } from "@/components/ThemeToggle"
 import { Feather } from '@expo/vector-icons';
 import { Button } from "@/components/ui/button"
 
@@ -14,13 +12,7 @@ const index = () => {
       }}
       className="p-3"
     >
-      <View className="flex-row justify-between">
-        <Button
-          size='icon'
-          variant="secondary"
-        >
-          <Feather name="bell" size={16} />
-        </Button>
+      <View className="flex-row justify-between items-center">
         <Text
           style={{
             fontFamily: 'semiBold'
@@ -28,7 +20,12 @@ const index = () => {
         >
           Hello, Natnael
         </Text>
-        <ThemeToggle />
+        <Button
+          size='icon'
+          variant="secondary"
+        >
+          <Feather name="bell" size={16} />
+        </Button>
       </View>
     </SafeAreaView>
   )

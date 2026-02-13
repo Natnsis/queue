@@ -1,7 +1,8 @@
 import { colors } from '@/assets/contants';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
