@@ -2,12 +2,11 @@ import { colors } from '@/assets/contants';
 import { View, Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react-native';
+import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 const index = () => {
   const router = useRouter()
-
   return (
     <SafeAreaView
       style={{
@@ -39,8 +38,12 @@ const index = () => {
         </Text>
 
         <View className='flex-row justify-end'>
-          <Button className='border rounded-full h-16 w-16' variant="ghost">
-            <ArrowRight size="25" />
+          <Button
+            className='border rounded-full h-16 w-16'
+            variant="ghost"
+            onPress={() => router.replace("/register")}
+          >
+            <Feather name='arrow-right' size={30} />
           </Button>
         </View>
 
