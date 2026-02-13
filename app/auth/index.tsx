@@ -82,11 +82,6 @@ const index = () => {
         </View>
 
         {isSignedUp ?
-          <View>
-            <Label>Email</Label>
-            <Input />
-          </View>
-          :
           <View className='mt-3'>
             <View>
               <Label
@@ -119,14 +114,88 @@ const index = () => {
                   fontFamily: 'bold',
                   color: colors.text
                 }}>
+                LogIn
+              </Text>
+              <Feather name='arrow-right' size={20} />
+            </Button>
+          </View>
+          :
+          <View className='mt-3'>
+            <View>
+              <Label
+                style={{
+                  fontFamily: 'regular'
+                }}
+                className='text-sm'>
+                Email
+              </Label>
+              <Input />
+            </View>
+
+            <View className='mt-4'>
+              <Label
+                style={{
+                  fontFamily: 'regular'
+                }}
+                className='text-sm'>
+                Password
+              </Label>
+              <Input />
+            </View>
+            <Button
+              style={{ backgroundColor: colors.primary }}
+              size="lg"
+              className='mt-5 mb-5'
+              onPress={() => router.replace('/tabs/home')}
+            >
+              <Text
+                style={{
+                  fontFamily: 'bold',
+                  color: colors.text
+                }}>
                 Get Started
               </Text>
               <Feather name='arrow-right' size={20} />
             </Button>
           </View>
         }
+      </View>
 
+      <View
+        style={{
+          backgroundColor: colors.text,
+        }}
+        className='mt-10 rounded-xl p-3'
+      >
+        <Text
+          style={{
+            color: '#ffffff',
+            fontFamily: 'regular'
+          }}
+          className='mb-2'
+        >
+          Other providers:
+        </Text>
 
+        <Button style={{
+          backgroundColor: '#ffffff'
+        }}>
+          <Image
+            source={require('@/assets/images/google.png')}
+            style={{
+              width: 20,
+              height: 20
+            }}
+          />
+          <Text
+            style={{
+              fontFamily: 'regular',
+              color: colors.text
+            }}
+          >
+            Continue with Google
+          </Text>
+        </Button>
       </View>
     </SafeAreaView>
   )

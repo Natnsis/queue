@@ -41,7 +41,7 @@ const index = () => {
           <Button
             className='border rounded-full h-16 w-16'
             variant="ghost"
-            onPress={() => router.replace("/register")}
+            onPress={() => router.replace("/auth")}
           >
             <Feather name='arrow-right' size={30} />
           </Button>
