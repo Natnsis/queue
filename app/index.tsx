@@ -1,9 +1,13 @@
 import { colors } from '@/assets/contants';
-import { View, Text, Image, Dimensions } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
 
 const index = () => {
-  const { height } = Dimensions.get('screen');
+  const router = useRouter()
+
   return (
     <SafeAreaView
       style={{
@@ -11,10 +15,9 @@ const index = () => {
       }}
     >
       <View style={{
-        height: height * 0.6,
         backgroundColor: colors.foreground
       }}
-        className='p-2 rounded-b-[30px]'
+        className='p-2 rounded-b-[30px] flex-1'
       >
         <Image
           source={require('@/assets/images/crowd.png')}
@@ -24,8 +27,7 @@ const index = () => {
           }}
         />
       </View>
-      <View style={{
-      }}>
+      <View className='p-2'>
         <Text
           style={{
             fontFamily: 'regular',
@@ -35,6 +37,13 @@ const index = () => {
         >
           Transfer, track, and take charge within seconds
         </Text>
+
+        <View className='flex-row justify-end'>
+          <Button className='border rounded-full h-16 w-16' variant="ghost">
+            <ArrowRight size="25" />
+          </Button>
+        </View>
+
       </View>
     </SafeAreaView>
   )
