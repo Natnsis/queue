@@ -1,8 +1,9 @@
-import { View } from "react-native"
-import { Text } from "@/components/ui/text"
+import { ScrollView } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { Feather } from '@expo/vector-icons';
-import { Button } from "@/components/ui/button"
+import Header from "@/components/Header";
+import HomeHero from "@/components/HomeHero";
+import HomeQuickActions from "@/components/HomeQuickActions";
+import NearbyQueues from "@/components/NearbyQueues";
 
 const index = () => {
   return (
@@ -12,22 +13,15 @@ const index = () => {
       }}
       className="p-3"
     >
-      <View className="flex-row justify-between items-center">
-        <Text
-          style={{
-            fontFamily: 'semiBold'
-          }}
-        >
-          Hello, Natnael
-        </Text>
-        <Button
-          size='icon'
-          variant="secondary"
-        >
-          <Feather name="bell" size={16} />
-        </Button>
-      </View>
-    </SafeAreaView>
+      <Header />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
+        <HomeHero />
+        <HomeQuickActions />
+        <NearbyQueues />
+      </ScrollView >
+    </SafeAreaView >
   )
 }
 
