@@ -30,7 +30,8 @@ const HomeHero = () => {
                 <Text
                   style={{
                     fontFamily: 'bold',
-                    fontSize: 18
+                    fontSize: 18,
+                    lineHeight: 20
                   }}
                 >
                   No Active Queues

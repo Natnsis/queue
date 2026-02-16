@@ -1,5 +1,5 @@
-import { View } from "react-native"
-import { Text } from "@/components/ui/text"
+import ScanHeader from "@/components/ScanHeader"
+import ScanQr from "@/components/ScanQr"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 const index = () => {
@@ -10,7 +10,8 @@ const index = () => {
       }}
       className="p-3"
     >
-      <Text>hehe</Text>
+      <ScanHeader />
+      <ScanQr />
     </SafeAreaView>
   )
 }
