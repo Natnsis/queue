@@ -10,7 +10,7 @@ const NearbyQueues = () => {
       style={{
         backgroundColor: colors.foreground
       }}
-      className="flex-1 mt-2 rounded-lg p-1"
+      className="flex-1 mt-2 rounded-lg p-1 mb-5"
     >
       <View className="flex-row items-center">
         <Feather name="map" color={colors.primary} size={20} />
