@@ -13,7 +13,9 @@ const index = () => {
       className="p-3"
     >
       <QueueHeader />
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
         <QueuePosition />
         <QueueDetail />
       </ScrollView>

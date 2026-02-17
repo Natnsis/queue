@@ -1,11 +1,11 @@
 import { colors } from '@/assets/contants';
 import { Feather } from '@expo/vector-icons';
-import { FootprintsIcon } from 'lucide-react-native';
 import { View, Text } from 'react-native';
+import { Button } from './ui/button';
 
 const QueueDetail = () => {
   return (
-    <View className='mt-2 p-1'>
+    <View className='mt-2 p-1  mb-10'>
       <View
         style={{
           backgroundColor: colors.foreground
@@ -115,6 +115,75 @@ const QueueDetail = () => {
             </View>
           </View>
         </View>
+      </View>
+
+      <View className='mt-5'>
+        <View
+          style={{
+            backgroundColor: colors.foreground
+          }}
+          className='rounded-lg p-2'
+        >
+          <Text
+            style={{
+              fontFamily: 'bold',
+              fontSize: 25,
+              lineHeight: 27
+            }}
+          >
+            City hospital - General
+          </Text>
+
+          <View
+            className='mt-1'
+          >
+            <Text
+              style={{
+                fontFamily: 'regular',
+                fontSize: 13,
+                lineHeight: 14
+              }}
+            >
+              - Downtown medical center
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'regular',
+                fontSize: 13,
+                lineHeight: 14
+              }}
+            >
+              - Joined at: 9:50 AM
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'regular',
+                fontSize: 13,
+                lineHeight: 14
+              }}
+            >
+              - Status: waiting
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'regular',
+                fontSize: 13,
+                lineHeight: 14
+              }}
+            >
+              - Queue ID: #03248012347895103
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      <View>
+        <Button>
+          <Text>
+
+            Leave Queue
+          </Text>
+        </Button>
       </View>
     </View>
   )
