@@ -177,10 +177,27 @@ const QueueDetail = () => {
         </View>
       </View>
 
-      <View>
-        <Button>
+      <View className='mt-3 mb-5'>
+        <Button
+          style={{
+            backgroundColor: colors.ash
+          }}
+          variant="outline"
+          className='mb-2'
+        >
+          <Text className='w-2/3 text-center'>
+            <Text className='mx-2'>
+              <Feather name='share' />
+            </Text>
+            Share Queue
+          </Text>
+        </Button>
+        <Button
+          style={{
+            backgroundColor: colors.primary
+          }}>
+          <Feather name='log-out' />
           <Text>
-
             Leave Queue
           </Text>
         </Button>
