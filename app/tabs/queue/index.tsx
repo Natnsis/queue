@@ -1,6 +1,8 @@
-import { View } from "react-native"
-import { Text } from "@/components/ui/text"
+import { View, Text, ScrollView } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import QueueHeader from "@/components/QueueHeader"
+import QueuePosition from "@/components/QueuePosition"
+import QueueDetail from "@/components/QueueDetail"
 
 const index = () => {
   return (
@@ -10,7 +12,13 @@ const index = () => {
       }}
       className="p-3"
     >
-      <Text>hehe</Text>
+      <QueueHeader />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
+        <QueuePosition />
+        <QueueDetail />
+      </ScrollView>
     </SafeAreaView>
   )
 }
