@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native"
+import { ScrollView } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import QueueHeader from "@/components/QueueHeader"
 import QueuePosition from "@/components/QueuePosition"

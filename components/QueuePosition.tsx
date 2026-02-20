@@ -5,47 +5,7 @@ import { View, Text } from 'react-native'
 const QueuePosition = () => {
   return (
     <View>
-      <View
-        style={{
-          backgroundColor: colors.foreground
-        }}
-        className='flex-row gap-2 p-2 rounded-lg my-3'>
-        <View
-          style={{
-            backgroundColor: colors.primary,
-            width: '30%'
-          }}
-          className='rounded-lg p-2 items-center justify-center'
-        >
-          <Feather
-            name="clock"
-            size={40}
-            color={colors.text} />
-        </View>
-        <View>
-          <Text
-            style={{
-              fontFamily: 'bold',
-              fontSize: 18,
-              lineHeight: 20
-            }}
-          >
-            Waiting for your turn
-          </Text>
-          <Text
-            style={{
-              fontFamily: 'italic',
-              fontSize: 12,
-              width: '70%'
-            }}
-          >
-            you will be notified when its almost your time.
-          </Text>
-        </View>
-      </View>
-
-      {/*postition card*/}
-      <View className='px-10'>
+      <View className='mt-3'>
         <View
           style={{
             backgroundColor: colors.foreground,
@@ -90,7 +50,7 @@ const QueuePosition = () => {
 
             <Text
               style={{
-                fontFamily: 'italic',
+                fontFamily: 'light',
                 fontSize: 11,
                 color: colors.primary
               }}

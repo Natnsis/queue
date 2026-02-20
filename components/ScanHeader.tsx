@@ -14,7 +14,7 @@ const ScanHeader = () => {
       </Text>
       <Text
         style={{
-          fontFamily: 'italic',
+          fontFamily: 'light',
           fontSize: 12,
         }}
       >

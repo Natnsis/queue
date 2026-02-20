@@ -17,14 +17,12 @@ export {
 export default function RootLayout() {
 
   const [loaded] = useFonts({
-    regular: require("@/assets/fonts/regular.ttf"),
-    bold: require("@/assets/fonts/bold.ttf"),
-    boldItalic: require("@/assets/fonts/bold-italic.ttf"),
-    italic: require("@/assets/fonts/italic.ttf"),
-    medium: require("@/assets/fonts/medium.ttf"),
-    mediumItalic: require("@/assets/fonts/medium-italic.ttf"),
-    semiBold: require("@/assets/fonts/semi-bold.ttf"),
-    semiBoldItalic: require("@/assets/fonts/semi-bold-italic.ttf"),
+    black: require("@/assets/fonts/Rubik-Black.ttf"),
+    bold: require("@/assets/fonts/Rubik-Bold.ttf"),
+    extraBold: require("@/assets/fonts/Rubik-ExtraBold.ttf"),
+    light: require("@/assets/fonts/Rubik-Light.ttf"),
+    medium: require("@/assets/fonts/Rubik-Medium.ttf"),
+    regular: require("@/assets/fonts/Rubik-Regular.ttf"),
   });
 
   if (!loaded) return null;

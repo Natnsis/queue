@@ -8,7 +8,8 @@ const HomeQuickActions = () => {
       <Text
         style={{
           fontFamily: 'bold',
-          fontSize: 15
+          fontSize: 15,
+          lineHeight: 18
         }}
       >
         Quick actions
@@ -37,8 +38,9 @@ const HomeQuickActions = () => {
           <View className="mt-2">
             <Text
               style={{
-                fontFamily: 'regular',
-                fontSize: 13
+                fontFamily: 'medium',
+                fontSize: 13,
+                lineHeight: 14
               }}
             >
               Title of it
@@ -46,7 +48,8 @@ const HomeQuickActions = () => {
             <Text
               style={{
                 fontFamily: 'regular',
-                fontSize: 10
+                fontSize: 12,
+                lineHeight: 14
               }}
             >
               description of it
