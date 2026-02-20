@@ -42,7 +42,9 @@ const NearbyQueues = () => {
             <View className="flex-col gap-0">
               <Text
                 style={{
-                  fontFamily: 'bold'
+                  fontFamily: 'bold',
+                  fontSize: 14,
+                  lineHeight: 18
                 }}
               >
                 City-Hospital General
@@ -50,7 +52,8 @@ const NearbyQueues = () => {
               <Text
                 style={{
                   fontFamily: 'regular',
-                  fontSize: 12
+                  fontSize: 12,
+                  lineHeight: 13
                 }}
               >
                 Down town medical center

@@ -9,43 +9,52 @@ const ScanQr = () => {
       style={{
         height: '35%',
       }}
-      className="mt-4 px-6"
+      className="mt-4"
     >
       <View
-        style={{
-          backgroundColor: colors.foreground,
-          height: '100%',
-        }}
-        className="justify-center items-center rounded-lg"
-      >
-        <Feather name="maximize" size={90} color={colors.primary} />
-      </View>
-
-      <View className="px-6 mt-5">
+        className="px-6">
         <View
-          className="flex-row justify-between">
-          <Button
+          style={{
+            backgroundColor: colors.foreground,
+            height: '100%',
+          }}
+          className="justify-center items-center rounded-lg"
+        >
+          <Image
+            source={require('@/assets/images/qr-code.jpg')}
             style={{
-              backgroundColor: colors.primary
+              height: '90%',
+              width: '90%'
             }}
-            className="w-2/3"
-          >
-            <Text
+          />
+        </View>
+
+        <View className="px-6 mt-5">
+          <View
+            className="flex-row justify-between">
+            <Button
               style={{
-                fontFamily: 'regular'
+                backgroundColor: colors.primary
+              }}
+              className="w-2/3"
+            >
+              <Text
+                style={{
+                  fontFamily: 'regular'
+                }}
+              >
+                Scan now
+              </Text>
+            </Button>
+
+            <Button
+              style={{
+                backgroundColor: colors.ash
               }}
             >
-              Scan now
-            </Text>
-          </Button>
-
-          <Button
-            style={{
-              backgroundColor: colors.ash
-            }}
-          >
-            <Feather name="image" size={20} />
-          </Button>
+              <Feather name="image" size={20} />
+            </Button>
+          </View>
         </View>
       </View>
 
@@ -53,7 +62,7 @@ const ScanQr = () => {
         style={{
           backgroundColor: colors.foreground
         }}
-        className="mt-5 p-2 rounded-lg">
+        className="mt-5 p-2 rounded-lg mx-1">
         <Text
           style={{
             fontFamily: "regular"

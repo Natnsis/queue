@@ -1,8 +1,7 @@
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, Image } from 'react-native';
 import { Button } from './ui/button';
 import { Feather } from '@expo/vector-icons';
 import { colors } from '@/assets/contants';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Link } from "expo-router";
 
 const HomeHero = () => {
@@ -11,21 +10,33 @@ const HomeHero = () => {
     <View
       style={{
         backgroundColor: colors.foreground,
-        height: height * 0.3
+        height: height * 0.25
       }}
       className="mt-3 p-3 rounded-lg"
     >
       <View
         style={{
           backgroundColor: '#FFFFFF',
-          height: '85%'
+          height: '88%'
         }}
         className="rounded-xl"
       >
         <View className="p-3 flex-row gap-2">
           <View className="flex-col">
-            <View className="flex-row gap-5">
-              <Icon name="qrcode-scan" size={70} color={colors.text} />
+            <View
+              style={{
+                width: '85%',
+                height: '65%'
+              }}
+              className="flex-row gap-5">
+              <Image
+                source={require('@/assets/images/qr-code.jpg')}
+                style={{
+                  height: '80%',
+                  width: '25%'
+                }}
+                className='p-5'
+              />
               <View>
                 <Text
                   style={{
@@ -38,14 +49,14 @@ const HomeHero = () => {
                 </Text>
                 <Text className="w-3/4"
                   style={{
-                    fontFamily: 'regular',
+                    fontFamily: 'light',
                     fontSize: 13
                   }}
                 >scan QR code to join a queue instantly</Text>
               </View>
             </View>
 
-            <View className="flex-row justify-center mt-3">
+            <View className="flex-row justify-center">
               <Button
                 style={{
                   backgroundColor: colors.primary
@@ -60,18 +71,22 @@ const HomeHero = () => {
         </View>
       </View>
 
-      <Link href='/'>
-        <Text
-          style={{
-            fontFamily: 'regular',
-            fontSize: 11
-          }}
-          className="text-center mt-1"
-        >
-          Genereate your own QR
-          <Feather name="chevrons-right" />
-        </Text>
-      </Link>
+      <View className='flex-1 flex-row items-center justify-center'>
+        <Link
+          href='/'>
+          <Text
+            style={{
+              fontFamily: 'regular',
+              fontSize: 11,
+              lineHeight: 12
+            }}
+            className="flex-row"
+          >
+            Genereate your own QR
+            <Feather name="chevrons-right" />
+          </Text>
+        </Link>
+      </View>
     </View>
   )
 }
