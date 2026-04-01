@@ -25,13 +25,13 @@ class Onboarding extends StatelessWidget {
             height: 50,
             child: FilledButton(
               onPressed: () {},
-              child: Text(
-                'Get Started',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight(200)),
-              ),
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(Colors.brown),
                 foregroundColor: WidgetStatePropertyAll(Colors.white12),
+              ),
+              child: Text(
+                'Get Started',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight(200)),
               ),
             ),
           ),
