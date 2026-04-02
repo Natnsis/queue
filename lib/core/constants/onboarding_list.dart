@@ -1,4 +1,14 @@
-import 'package:queue/core/constants/onboarding_data.dart';
+class OnboardingData {
+  final String image;
+  final String title;
+  final String description;
+
+  const OnboardingData({
+    required this.image,
+    required this.title,
+    required this.description,
+  });
+}
 
 const List<OnboardingData> onboardingList = [
   OnboardingData(
